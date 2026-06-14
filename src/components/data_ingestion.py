@@ -8,7 +8,8 @@ from sklearn.model_selection import train_test_split
 from src.exception import CustomException
 from src.logger import logging
 from src.components.data_transformation import DataTransformation
-
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 @dataclass
 class DataIngestionConfig:
@@ -88,6 +89,8 @@ if __name__ == "__main__":
             test_data
         )
     )
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr, test_arr, preprocessor_path))
 
     print("Train array shape:", train_arr.shape)
     print("Test array shape:", test_arr.shape)
